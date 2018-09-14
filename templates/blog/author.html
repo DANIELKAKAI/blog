@@ -1,0 +1,205 @@
+
+{% extends 'blog/base2.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+		<!-- PAGE HEADER -->
+		<div class="page-header">
+			<div class="page-header-bg" style="background-image: url({{posts.0.banner_image.url}});" data-stellar-background-ratio="0.5"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10 text-center">
+						<div class="author">
+							<img class="author-img center-block" src="{{author.author_image.url}}" alt="author image">
+							<h1 class="text-uppercase">{{author.name}}</h1>
+							<p class="lead">{{author.about}}</p>
+							<ul class="author-social">
+								<li><a target="_blank" href="{{author.facebook_link}}"><i class="fa fa-facebook"></i></a></li>
+								<li><a target="_blank" href="{{author.twitter_link}}"><i class="fa fa-twitter"></i></a></li>
+								<li><a target="_blank" href="{{author.instagram_link}}"><i class="fa fa-instagram"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /PAGE HEADER -->
+	</header>
+	<!-- /HEADER -->
+
+	<!-- SECTION -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-8">
+
+					{% for post in posts %}
+					<!-- post -->
+					<div class="post post-row">
+						<a class="post-img" href="/blog/post/{{post.id}}/{{post.title}}/">
+							<img class="img-responsive center-block recent-img"  src="{{post.image_1.url}}" alt="post image">
+						</a>
+						<div class="post-body">
+							<div class="post-category">
+								<a href="/blog/category/{{post.category}}/">{{post.category}}</a>
+							</div>
+							<h3 class="post-title"><a href="/blog/post/{{post.id}}/{{post.title}}/">{{post.title}}</a></h3>
+							<ul class="post-meta">
+								<li><a href="/blog/author/{{post.author.name}}/">{{post.author.name}}</a></li>
+								<li>{{post.pub_date.date}}</li>
+							</ul>
+							<p>{{post.preview}}</p>
+						</div>
+					</div>
+					<!-- /post -->
+					{% endfor  %}
+
+
+					{% if load_button %}
+					<div id="more"></div>
+
+
+					<div class="section-row loadmore text-center">
+						<button id="add-more-author"  name="{{author.name}}" data-href="2" class="primary-button">Load More</button>
+					</div>
+					{% endif %}
+
+					</div>
+
+				<div class="col-md-4">
+					<!-- ad widget-->
+					<div class="aside-widget text-center">
+						<a href="#" style="display: inline-block;margin: auto;">
+							<img class="img-responsive center-block" src="{% static 'blog/img/ad-3.jpg' %}" width="300px" height="250px" alt="ad image">
+						</a>
+					</div>
+					<!-- /ad widget -->
+
+					<!-- social widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Social Media</h2>
+						</div>
+						<div class="social-widget">
+							<ul>
+								<li>
+									<a href="https://web.facebook.com/price.hub.94" target="_blank" class="social-facebook">
+										<i class="fa fa-facebook"></i>
+										<span>{{fb_count}}<br>Followers</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/price_hub" target="_blank" class="social-twitter">
+										<i class="fa fa-twitter"></i>
+										<span>{{twitter_count}}<br>Followers</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.instagram.com/p/Bixq1VEHoxw/?r=wa1" target="_blank" class="social-instagram">
+										<i class="fa fa-instagram"></i>
+										<span>{{ig_count}}<br>Followers</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- /social widget -->
+
+					<!-- category widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Categories</h2>
+						</div>
+						<div class="category-widget">
+							<ul>
+								<li><a href="/blog/category/fashion-and-style/">Fashion & Style </a></li>
+								<li><a href="/blog/category/tech-and-gadgets/">tech & gadgets</a></li>
+								<li><a href="/blog/category/home-and-living/">Home & Living</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- /category widget -->
+
+					<!-- newsletter widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Newsletter</h2>
+						</div>
+						<div  class="newsletter-widget">
+							<form method="post" action="#subscribe" onsubmit="return false" >{% csrf_token %}
+								<p>Subscribe to recieve latest news</p>
+								<input id="email-input" class="input" name="newsletter" placeholder="Enter Your Email">
+								<button  id ="subscribe-btn" class="primary-button">Subscribe</button>
+							</form>
+						</div>
+					</div>
+					<!-- /newsletter widget -->
+
+					<!-- post widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Popular Posts</h2>
+						</div>
+
+						{% for post in popular_posts %}
+						<!-- post -->
+						<div class="post post-widget">
+							<a class="post-img" href="/blog/post/{{post.id}}/{{post.title}}">
+								<img class=" center-block small-img" src="{{post.image_1.url}}" alt="post image">
+							</a>
+							<div class="post-body">
+								<div class="post-category">
+									<a href="/blog/category/{{post.category}}/">{{post.category}}</a>
+								</div>
+								<h3 class="post-title"><a href="/blog/post/{{post.id}}/{{post.title}}">{{post.title}}</a></h3>
+							</div>
+						</div>
+						<!-- /post -->
+						{% endfor %}
+
+
+
+
+
+
+					</div>
+					<!-- /post widget -->
+
+					<!-- galery widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Photos</h2>
+						</div>
+						<div class="galery-widget">
+							<ul>
+								{% for image in side_images %}
+								<li><a href="/blog/post/{{image.id}}/"><img src="{{image.url}}" alt="photos"></a></li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					<!-- /galery widget -->
+
+					<!-- Ad widget -->
+					<div class="aside-widget text-center">
+						<a href="#" style="display: inline-block;margin: auto;">
+							<img class="img-responsive center-block" src="{% static 'blog/img/ad-1.jpg' %}" width="300px" height="450px" alt="ad image">
+						</a>
+					</div>
+					<!-- /Ad widget -->
+
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /SECTION -->
+
+
+	{% endblock %}

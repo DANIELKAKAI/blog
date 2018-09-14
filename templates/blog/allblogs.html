@@ -1,0 +1,119 @@
+{% extends 'blog/base2.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <div class="page-header-bg" style="background-image: url({{posts.0.banner_image.url}});"
+         data-stellar-background-ratio="0.5"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 text-center">
+                <h1 class="text-uppercase">{{title}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /PAGE HEADER -->
+
+</header>
+<!-- /HEADER -->
+
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- ad -->
+            <div class="col-md-12 section-row text-center">
+                <a href="#" style="display: inline-block;margin: auto;">
+                    <img class="img-responsive center-block" src="{% static 'blog/img/ad-2.jpg' %}" width="728px" height="90px" alt="ad image">
+                </a>
+            </div>
+            <!-- /ad -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- row -->
+
+
+                {% for post in posts %}
+                <!-- post -->
+                <div class="col-md-3">
+                    <div class="post">
+                        <a class="post-img" href="/blog/post/{{post.id}}/{{post.title}}/">
+                            <img class=" center-block box-img" src="{{post.image_1.url}}" alt="post image"></a>
+                        <div class="post-body">
+                            <div class="post-category">
+                                <a href="/blog/category/{{post.category}}/">{{post.category}}</a>
+                            </div>
+                            <h3 class="post-title"><a href="/blog/post/{{post.id}}/{{post.title}}/">{{post.title}}</a></h3>
+                            <ul class="post-meta">
+                                <li><a href="/blog/author/{{post.author.name}}/">{{post.author.name}}</a></li>
+                                <li>{{post.pub_date.date}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post -->
+
+
+                {% if forloop.counter|divisibleby:4 %}
+                <div class="clearfix hidden-xs visible-md visible-lg"></div>
+                <div class=" hidden-xs col-md-12">
+                    <div class="section-title">
+
+                    </div>
+                </div>
+
+                {% endif %}
+
+                {% endfor %}
+
+
+            </div>
+            <!-- /row -->
+
+            <div class="clearfix visible-md visible-lg"></div>
+            <div class="col-md-12">
+                <div class="section-title">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- /SECTION -->
+
+{% if posts.has_next %}
+<div class="section">
+    <div class="section-row loadmore text-center">
+        <a href="?page={{posts.next_page_number}}{{tag_param}}{{search_aram}}" class="primary-button">Load More</a>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
+	

@@ -1,0 +1,20 @@
+{% for post in posts %}
+<!-- post -->
+<div class="post post-row">
+    <a class="post-img" href="/blog/post/{{post.id}}/{{post.title}}">
+        <img class="img-responsive center-block recent-img" src="{{post.image_1.url}}" alt="post image">
+    </a>
+    <div class="post-body">
+        <div class="post-category">
+            <a href="/blog/category/{{post.category}}/">{{post.category}}</a>
+        </div>
+        <h3 class="post-title"><a href="/blog/post/{{post.id}}/{{post.title}}">{{post.title}}</a></h3>
+        <ul class="post-meta">
+            <li><a href="/blog/author/{{post.author.name}}/">{{post.author.name}}</a></li>
+            <li>{{post.pub_date.date}}</li>
+        </ul>
+        <p>{{post.preview}}</p>
+    </div>
+</div>
+<!-- /post -->
+{% endfor %}

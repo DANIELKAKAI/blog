@@ -1,0 +1,101 @@
+{% extends 'blog/base2.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+		<!-- PAGE HEADER -->
+		<div class="page-header">
+			<div class="page-header-bg" style="background-image: url({% static 'blog/img/post-11.jpg' %});" data-stellar-background-ratio="0.5"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10 text-center">
+						<h1 class="text-uppercase">contacts</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /PAGE HEADER -->
+
+	</header>
+	<!-- /HEADER -->
+
+	<!-- SECTION -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-8">
+					<div class="section-row">
+						<div class="section-title">
+							<h2 class="title">Contact Information</h2>
+						</div>
+						<p>Contact us anytime for more information or advertising</p>
+						
+						<ul class="contact">
+							<li><i class="fa fa-phone"></i>+254 719 755 545</li>
+							<li><i class="fa fa-envelope"></i> <a href="#">info@pricehub.co.ke</a></li>
+							<li><i class="fa fa-map-marker"></i>Chester House Suite 8, 1st Floor</li>
+						</ul>
+					</div>
+
+
+
+				</div>
+				<div class="col-md-4">
+
+					<!-- social widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Social Media</h2>
+						</div>
+						<div class="social-widget">
+							<ul>
+								<li>
+									<a href="https://web.facebook.com/price.hub.94" target="_blank" class="social-facebook">
+										<i class="fa fa-facebook"></i>
+										<span>{{fb_count}}<br>Followers</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/price_hub" target="_blank" class="social-twitter">
+										<i class="fa fa-twitter"></i>
+										<span>{{twitter_count}}<br>Followers</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.instagram.com/p/Bixq1VEHoxw/?r=wa1" target="_blank" class="social-instagram">
+										<i class="fa fa-instagram"></i>
+										<span>{{ig_count}}<br>Followers</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- /social widget -->
+
+					<!-- newsletter widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Newsletter</h2>
+						</div>
+						<div class="newsletter-widget">
+							<form method="post" action="#subscribe" onsubmit="return false" >{% csrf_token %}
+								<p>Subscribe to recieve latest news</p>
+								<input id="email-input" class="input" name="newsletter" placeholder="Enter Your Email">
+								<button id ="subscribe-btn" class="primary-button">Subscribe</button>
+							</form>
+						</div>
+					</div>
+					<!-- /newsletter widget -->
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /SECTION -->
+
+{% endblock %}
